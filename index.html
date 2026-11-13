@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | Giới thiệu bản thân</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main: #6c63ff;
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --text: #222;
+    --sub: #777;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+    line-height: 1.6;
+}
+
+body.dark {
+    --bg: #121222;
+    --card: #202036;
+    --text: #ffffff;
+    --sub: #b5b5c8;
+}
+
+/* NAVBAR */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    z-index: 1000;
+    box-shadow: 0 2px 15px #00000010;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--main);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--main);
+}
+
+#themeBtn {
+    border: none;
+    background: var(--main);
+    color: white;
+    padding: 9px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* GENERAL */
+section {
+    padding: 100px 10%;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 45px;
+}
+
+.title span {
+    color: var(--main);
+}
+
+/* HOME */
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 130px;
+}
+
+.home-content {
+    max-width: 600px;
+}
+
+.home-content h3 {
+    font-size: 25px;
+    color: var(--sub);
+}
+
+.home-content h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.home-content h1 span {
+    color: var(--main);
+}
+
+.home-content p {
+    color: var(--sub);
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--main);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 20px #6c63ff66;
+}
+
+.avatar {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 8px solid var(--main);
+    object-fit: cover;
+    box-shadow: 0 0 35px #6c63ff55;
+}
+
+/* ABOUT */
+.about {
+    background: var(--card);
+    border-radius: 25px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-content img {
+    width: 250px;
+    border-radius: 20px;
+}
+
+.about-text p {
+    color: var(--sub);
+    margin-bottom: 15px;
+}
+
+/* SKILLS */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.skill {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #00000008;
+}
+
+.skill h3 {
+    margin-bottom: 12px;
+}
+
+.progress {
+    height: 10px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #6c63ff, #a78bfa);
+    border-radius: 20px;
+}
+
+/* PROJECT */
+.projects {
+    background: var(--card);
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: var(--bg);
+    padding: 25px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px #00000015;
+}
+
+.project-card h3 {
+    color: var(--main);
+    margin-bottom: 10px;
+}
+
+/* HOBBY */
+.hobby-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hobby {
+    background: var(--card);
+    padding: 25px 35px;
+    border-radius: 15px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.hobby:hover {
+    background: var(--main);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+.contact {
+    background: var(--card);
+    border-radius: 25px;
+    text-align: center;
+}
+
+.contact p {
+    color: var(--sub);
+    margin: 15px 0;
+}
+
+.contact a {
+    color: var(--main);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--sub);
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 13px;
+    }
+
+    .home {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .home-content h1 {
+        font-size: 38px;
+    }
+
+    .avatar {
+        width: 220px;
+        height: 220px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+
+    .skills-container,
+    .project-container {
+        grid-template-columns: 1fr;
+    }
+
+    .home-content h1 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">MyProfile.</div>
+
+    <nav>
+        <a href="#home">Trang chủ</a>
+        <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+        <a href="#contact">Liên hệ</a>
+        <button id="themeBtn">🌙</button>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="home" id="home">
+
+    <div class="home-content">
+        <h3>Xin chào! Tôi là</h3>
+
+        <h1>Nguyễn Văn <span>ABC</span></h1>
+
+        <h3>Học sinh | Developer tương lai</h3>
+
+        <p>
+            Chào mừng bạn đến với trang web cá nhân của tôi.
+            Tôi là một người yêu thích công nghệ, sáng tạo
+            và luôn mong muốn học hỏi những điều mới.
+        </p>
+
+        <a href="#about" class="btn">Tìm hiểu thêm</a>
+    </div>
+
+    <img class="avatar"
+         src="https://placehold.co/400x400/6c63ff/ffffff?text=YOUR+PHOTO"
+         alt="Ảnh đại diện">
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+
+    <h2 class="title">Về <span>bản thân tôi</span></h2>
+
+    <div class="about-content">
+
+        <img src="https://placehold.co/400x400/8b83ff/ffffff?text=ABOUT+ME"
+             alt="Ảnh giới thiệu">
+
+        <div class="about-text">
+            <h2>Xin chào, mình là Nguyễn Văn ABC!</h2>
+
+            <p>
+                Mình hiện đang là học sinh và có niềm đam mê
+                với công nghệ thông tin, lập trình website
+                và thiết kế giao diện.
+            </p>
+
+            <p>
+                Mình thích khám phá những kiến thức mới,
+                tham gia các hoạt động sáng tạo và không ngừng
+                phát triển bản thân.
+            </p>
+
+            <p><b>Ngày sinh:</b> 01/01/2008</p>
+            <p><b>Quê quán:</b> Ninh Bình, Việt Nam</p>
+            <p><b>Email:</b> example@gmail.com</p>
+
+            <a href="#contact" class="btn">Liên hệ với tôi</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <h2 class="title">Kỹ năng <span>của tôi</span></h2>
+
+    <div class="skills-container">
+
+        <div class="skill">
+            <h3>HTML - 90%</h3>
+            <div class="progress">
+                <span style="width:90%"></span>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>CSS - 80%</h3>
+            <div class="progress">
+                <span style="width:80%"></span>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>JavaScript - 65%</h3>
+            <div class="progress">
+                <span style="width:65%"></span>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Thiết kế - 75%</h3>
+            <div class="progress">
+                <span style="width:75%"></span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+
+    <h2 class="title">Dự án <span>của tôi</span></h2>
+
+    <div class="project-container">
+
+        <div class="project-card">
+            <h3>🌐 Website cá nhân</h3>
+            <p>
+                Thiết kế website giới thiệu bản thân
+                bằng HTML và CSS.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>🎨 Thiết kế giao diện</h3>
+            <p>
+                Tạo giao diện website hiện đại,
+                thân thiện với người dùng.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>💻 Dự án lập trình</h3>
+            <p>
+                Tìm hiểu và thực hành JavaScript
+                thông qua các dự án nhỏ.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobby">
+
+    <h2 class="title">Sở thích <span>của tôi</span></h2>
+
+    <div class="hobby-container">
+        <div class="hobby">🎮 Chơi game</div>
+        <div class="hobby">🎵 Nghe nhạc</div>
+        <div class="hobby">💻 Lập trình</div>
+        <div class="hobby">📚 Đọc sách</div>
+        <div class="hobby">⚽ Thể thao</div>
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+
+    <h2 class="title">Liên hệ <span>với tôi</span></h2>
+
+    <p>Nếu bạn muốn kết nối hoặc trao đổi, hãy liên hệ với tôi!</p>
+
+    <p>📧 Email: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+
+    <p>📘 Facebook:
+        <a href="https://facebook.com/" target="_blank">
+            Trang Facebook của tôi
+        </a>
+    </p>
+
+    <p>📍 Địa chỉ: Ninh Bình, Việt Nam</p>
+
+    <a href="mailto:example@gmail.com" class="btn">
+        Gửi email cho tôi
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Nguyễn Văn ABC | Designed with ❤️</p>
+    <p>Website giới thiệu bản thân</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", function() {
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")) {
+        themeBtn.innerHTML = "☀️";
+    } else {
+        themeBtn.innerHTML = "🌙";
+    }
+});
+
+// Hiệu ứng xuất hiện khi cuộn trang
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.1 });
+
+sections.forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(30px)";
+    section.style.transition = "all 0.7s ease";
+    observer.observe(section);
+});
+</script>
+
+</body>
+</html>
